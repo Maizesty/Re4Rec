@@ -52,6 +52,10 @@ def addRedencyRewrite(self,input,originalNode,inputConst,
   redencyGatherAxes = [0]
   # 要指定名字，就拿原来的节点名指定
   name = originalNode.name
+  # 这里涉及到子图替换所以要提取一下原本节点的outputs
+  outputs = originalNode.outputs
+  # for output in outputs:
+  #   output.inputs.clear()
   # 需要原来加的常量的数据，传入一个gs的const变量，然后通过.values变成np的张量
   # 现在先假设是非广播加，所以常量和非常量的维度是一样的
   originalInput = inputConst.values
@@ -61,6 +65,9 @@ def addRedencyRewrite(self,input,originalNode,inputConst,
   redencyRepeat[0] = input.shape[0]
   unRedencyPart = self.unRedencyPartOfAdd(input,unRedencyStart,unRedencyEnd,unRedencyAxes,unRedencyAddData,name)
   redencyPart = self.redencyPartofAdd(input,redencyStart,redencyEnd,redencyAxes,redencyAddData,redencyRepeat,name,redencyGatherAxes)
-  concatOp = self.concat([*redencyPart,*unRedencyPart],1)
+  
+  concatOp = self.concat([*redencyPart,*unRedencyPart],outputs,1)
+  # 替换完了清空一下原本节点的output
+  originalNode.outputs = []
   return concatOp
 

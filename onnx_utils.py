@@ -335,7 +335,9 @@ def tile(self,input,repeat):
 
 
 @gs.Graph.register()
-def concat(self, inputs, axis=0):
+def concat(self, inputs,outputs = None, axis=0):
+    if outputs is None :
+        outputs = ["concat_out_gs"]
     return self.layer(
-        op="Concat", inputs=inputs, attrs={"axis": axis}, outputs=["concat_out_gs"]
+        op="Concat", inputs=inputs, attrs={"axis": axis}, outputs=outputs
     )[0]
