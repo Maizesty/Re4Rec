@@ -1,0 +1,61 @@
+// graph
+digraph {
+	graph [rankdir=LR]
+	x [label=x align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	add [label=add align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	x -> add
+	add_1 [label=add_1 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	x -> add_1
+	linear_fc [label=linear_fc align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	add_1 -> linear_fc
+	sum_1 [label=sum_1 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	linear_fc -> sum_1
+	add_2 [label=add_2 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	sum_1 -> add_2
+	getitem [label=getitem align=left fillcolor=Orange fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	add -> getitem
+	getitem_1 [label=getitem_1 align=left fillcolor=Orange fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	add -> getitem_1
+	embed [label=embed align=left fillcolor=Orange fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	getitem -> embed
+	view_1 [label=view_1 align=left fillcolor=Orange fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	embed -> view_1
+	redundancy_linear [label=redundancy_linear align=left fillcolor=Orange fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	view_1 -> redundancy_linear
+	embed_1 [label=embed_1 align=left fillcolor=Orange fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	getitem_1 -> embed_1
+	view_2 [label=view_2 align=left fillcolor=Orange fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	embed_1 -> view_2
+	non_redundancy_linear [label=non_redundancy_linear align=left fillcolor=Orange fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	view_2 -> non_redundancy_linear
+	add_4 [label=add_4 align=left fillcolor=Orange fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	redundancy_linear -> add_4
+	non_redundancy_linear -> add_4
+	mlp_mlp_1 [label=mlp_mlp_1 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	add_4 -> mlp_mlp_1
+	mlp_mlp_2 [label=mlp_mlp_2 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	mlp_mlp_1 -> mlp_mlp_2
+	mlp_mlp_3 [label=mlp_mlp_3 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	mlp_mlp_2 -> mlp_mlp_3
+	mlp_mlp_4 [label=mlp_mlp_4 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	mlp_mlp_3 -> mlp_mlp_4
+	mlp_mlp_5 [label=mlp_mlp_5 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	mlp_mlp_4 -> mlp_mlp_5
+	mlp_mlp_6 [label=mlp_mlp_6 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	mlp_mlp_5 -> mlp_mlp_6
+	mlp_mlp_7 [label=mlp_mlp_7 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	mlp_mlp_6 -> mlp_mlp_7
+	mlp_mlp_8 [label=mlp_mlp_8 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	mlp_mlp_7 -> mlp_mlp_8
+	mlp_mlp_9 [label=mlp_mlp_9 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	mlp_mlp_8 -> mlp_mlp_9
+	add_3 [label=add_3 align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	add_2 -> add_3
+	mlp_mlp_9 -> add_3
+	squeeze [label=squeeze align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	add_3 -> squeeze
+	sigmoid [label=sigmoid align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	squeeze -> sigmoid
+	output [label=output align=left fillcolor=White fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	sigmoid -> output
+}
